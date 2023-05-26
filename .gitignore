@@ -1,4 +1,4 @@
-# Logs
+# Logsimport {store} from './store';
 logs
 *.log
 npm-debug.log*

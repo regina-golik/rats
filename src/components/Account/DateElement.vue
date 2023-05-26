@@ -9,20 +9,27 @@
   </Accordion>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import InfoElement from "./InfoElement.vue";
 import { Accordion } from "../../ui";
+import { DataAccount } from "./types.ts";
+import { PropType } from "vue";
 
 const props = defineProps({
-  dateInfo: Object,
+  dateInfo: {
+    type: Object as PropType<DataAccount>,
+    required: true,
+  },
   showSubtitle: Boolean,
 });
 
-const sum = props.dateInfo.items
-  .map((item) => item.sum)
-  .reduce((sum, current) => {
-    return +sum + +current;
-  });
+const sum = props.dateInfo
+  ? props.dateInfo.items
+      .map((item) => (item.sum ? item.sum : 0))
+      .reduce((sum, current) => {
+        return +sum + +current;
+      })
+  : 0;
 </script>
 
 <style module lang="scss">

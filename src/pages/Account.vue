@@ -8,13 +8,13 @@
     <div :class="$style.items">
       <Tabs :activeTab="activeTab" :tabs="tabs" @changeTab="changeTab" />
       <DateElement
-        v-for="date in plus"
+        v-for="date in receipt"
         :dateInfo="date"
         :showSubtitle="true"
         v-show="activeTab === 0"
       />
       <DateElement
-        v-for="date in minus"
+        v-for="date in debiting"
         :dateInfo="date"
         :showSubtitle="false"
         v-show="activeTab === 1"
@@ -27,6 +27,7 @@
 import DateElement from "../components/Account/DateElement.vue";
 import { ref } from "vue";
 import { Tabs } from "../ui";
+import { receipt, debiting } from '../store/accounts.ts';
 
 const activeTab = ref<string | number>(0);
 
@@ -43,68 +44,10 @@ const tabs = [
     title: "Расходы",
     value: 1,
   },
-  {
-    title: "Запланированные расходы",
-    value: 2,
-  },
-];
-const plus = [
-  {
-    date: "12.05.2023",
-    items: [
-      {
-        sum: "350",
-        time: "17:12",
-      },
-      {
-        sum: "276",
-        time: "16:03",
-      },
-      {
-        sum: "500",
-        time: "14:47",
-      },
-    ],
-  },
-  {
-    date: "11.05.2023",
-    items: [
-      {
-        sum: "350",
-        time: "19:06",
-      },
-      {
-        sum: "180",
-        time: "11:43",
-      },
-      {
-        sum: "865",
-        time: "08:36",
-      },
-    ],
-  },
-];
-const minus = [
-  {
-    date: "12.05.2023",
-    items: [
-      {
-        sum: "350",
-        time: "17:12",
-        reason: "Купили корм",
-      },
-    ],
-  },
-  {
-    date: "11.05.2023",
-    items: [
-      {
-        sum: "3500",
-        time: "19:06",
-        reason: "Операция по удалению ОМЖ",
-      },
-    ],
-  },
+  // {
+  //   title: "Запланированные расходы",
+  //   value: 2,
+  // },
 ];
 </script>
 
