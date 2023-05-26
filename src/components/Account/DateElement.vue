@@ -25,7 +25,7 @@ const props = defineProps({
 
 const sum = props.dateInfo
   ? props.dateInfo.items
-      .map((item) => (item.sum ? item.sum : 0))
+      .map((item) => +item.sum)
       .reduce((sum, current) => {
         return +sum + +current;
       })

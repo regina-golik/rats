@@ -13,8 +13,11 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  images: Array<String>,
+defineProps({
+  images: {
+    type: Array<String>,
+    required: true,
+  },
 });
 </script>
 

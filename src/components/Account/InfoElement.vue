@@ -24,7 +24,10 @@ import { PropType } from "vue";
 import { DataAccountItem } from "./types.ts";
 
 defineProps({
-  item: Object as PropType<DataAccountItem>,
+  item: {
+    type: Object as PropType<DataAccountItem>,
+    required: true,
+  },
 });
 </script>
 

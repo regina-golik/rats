@@ -8,7 +8,7 @@
   </header>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts" setup></script>
 
 <style module lang="scss">
 .header {
