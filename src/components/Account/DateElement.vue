@@ -5,7 +5,11 @@
     :openAll="!showSubtitle"
     :class="$style.accordion"
   >
-    <InfoElement v-for="item in dateInfo.items" :item="item" />
+    <InfoElement
+      v-for="item in dateInfo.items"
+      :item="item"
+      :isExpenses="isExpenses"
+    />
   </Accordion>
 </template>
 
@@ -21,6 +25,10 @@ const props = defineProps({
     required: true,
   },
   showSubtitle: Boolean,
+  isExpenses: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const sum = props.dateInfo

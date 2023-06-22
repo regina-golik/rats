@@ -44,12 +44,16 @@ defineEmits<{
   font-size: 1.2rem;
   padding: 1rem;
   transition: background-color 0.1s linear;
-
-  &:hover {
-    background-color: rgba(230, 210, 174, 0.5);
-  }
 }
 .activeTab {
   font-weight: 700;
+}
+
+@media screen and (min-width: 991px) {
+  .tab {
+    &:hover {
+      background-color: rgba(230, 210, 174, 0.5);
+    }
+  }
 }
 </style>

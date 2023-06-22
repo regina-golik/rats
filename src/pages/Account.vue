@@ -18,6 +18,7 @@
         :dateInfo="date"
         :showSubtitle="false"
         v-show="activeTab === 1"
+        :isExpenses="true"
       />
     </div>
   </div>
@@ -27,7 +28,7 @@
 import DateElement from "../components/Account/DateElement.vue";
 import { ref } from "vue";
 import { Tabs } from "../ui";
-import { receipt, debiting } from '../store/accounts.ts';
+import { receipt, debiting } from "../store/accounts.ts";
 
 const activeTab = ref<string | number>(0);
 
@@ -56,7 +57,7 @@ const tabs = [
   margin: 40px 0;
 }
 .info {
-  background-color: #b48ad0;
+  background-color: #ffe08c;
   padding: 40px;
   border-radius: 6px 6px 0 0;
   margin-top: 20px;
@@ -73,6 +74,7 @@ const tabs = [
 .balance {
   font-size: 4rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .items {
@@ -98,11 +100,29 @@ const tabs = [
   justify-content: space-between;
 }
 @media screen and (max-width: 576px) {
-  .info {
+  .items {
     padding: 20px;
   }
+  .info {
+    padding: 20px;
+    gap: 20px;
+  }
   .balance {
-    font-size: 28px;
+    font-size: 2rem;
+  }
+  .text {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .balance {
+    font-size: 1.6rem;
+  }
+  .text {
+    font-size: 1.4rem;
+  }
+  .account {
+    margin-top: 20px;
   }
 }
 </style>

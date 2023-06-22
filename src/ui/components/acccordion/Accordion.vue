@@ -1,15 +1,22 @@
 <template>
   <v-expansion-panels :class="$style.accordion" v-model="panels">
     <v-expansion-panel>
-      <template #title>
+      <v-expansion-panel-title>
         <div :class="$style.header">
           <div :class="$style.title">{{ title }}</div>
           <div :class="$style.subtitle">{{ subtitle }}</div>
         </div>
-      </template>
-      <template #text>
+        <template v-slot:actions="{ expanded }">
+          <img
+            src="/public/arrow.svg"
+            :class="[$style.arrow, expanded ? $style.arrowUp : '']"
+            alt="arrow"
+          />
+        </template>
+      </v-expansion-panel-title>
+      <v-expansion-panel-text>
         <slot></slot>
-      </template>
+      </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
@@ -50,5 +57,34 @@ const panels = ref(props.openAll ? [0] : []);
 .subtitle {
   font-size: 1rem;
   font-weight: 400;
+}
+.arrow {
+  transform: rotate(0deg);
+  transition: all 0.3s;
+  width: 10px;
+}
+.arrowUp {
+  transform: rotate(180deg);
+}
+@media screen and (max-width: 992px) {
+  .accordion {
+    :global {
+      .v-expansion-panel-title:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .accordion {
+    :global {
+      .v-expansion-panel-title {
+        padding: 16px 10px;
+      }
+    }
+  }
 }
 </style>

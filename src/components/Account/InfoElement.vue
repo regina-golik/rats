@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.item">
-    <div :class="$style.itemInfo">
+    <div :class="[$style.itemInfo, { [$style.itemInfoExpenses]: isExpenses }]">
       <div :class="$style.element">
         <div :class="$style.time">{{ item.time }}</div>
         <div :class="$style.num">{{ item.sum }}₽</div>
@@ -27,6 +27,10 @@ defineProps({
   item: {
     type: Object as PropType<DataAccountItem>,
     required: true,
+  },
+  isExpenses: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
@@ -78,8 +82,9 @@ defineProps({
     color: #333;
   }
 }
+.itemInfoExpenses {}
 @media screen and (max-width: 992px) {
-  .itemInfo {
+  .itemInfoExpenses {
     flex-direction: column;
     gap: 20px;
   }
